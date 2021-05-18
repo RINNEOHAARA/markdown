@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event monitor</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="count+=Math.random()">单击生成随机数</button>
+        <button v-on:keyup.enter=random_number>回车生成</button>
+        <p>自动生成随机数{{count}}</p>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                count:0
+            },
+            methods:{
+                random_number(){
+                    return this.count+=Math.random()
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>

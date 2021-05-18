@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        name:{{name}}
+        <br>
+        age:{{age}}
+        <br>
+        <button @click="showInfo">cilick</button>
+        <button @click='sing'>sing</button>
+        <p>{{msg}}</p>
+        <p>{{song}}</p>
+        <p>sum:{{totalprice}}</p>
+        <p>单价:{{price}}</p>
+        <p>number:{{num}}</p>
+        <div>
+            <button @click="num == 0 ? 0 : num--">减少数量</button>
+             <!-- 如果等于0不变，大于0减 -->
+            <button @click="num++">增加数量</button>
+            <button @click="total1">统计 </button>
+            {{total}}
+        </div>
+        <input type="text" v-model='cityName'>
+        <div>{{message | toUpcase}}</div>
+    </div>
+    
+    <script>
+        var vm= new Vue({
+            el:'#app',
+            data:{
+                name:'zhang',
+                age:18,
+                msg:'tent1',
+                song:'tent2',
+                cityName:'shanghai',
+                price:20,
+                num:0,
+                total:0,
+                
+                message:'helloworld'
+            },
+            computed:{
+                totalprice(){
+                    return this.price * this.num
+                }
+
+            },
+            watch:{
+                cityName (newname, oldname){
+                    console.log(newname, oldname)
+                }
+            },  
+            methods:{
+            showInfo () {
+                this.msg='cilick tent'
+                },
+            sing(){
+                this.song='sing tent'
+            },
+            total1(){
+                this.total=this.price *this.num
+            },
+            filters:{
+                toUpcase (value){
+                    return value ? value.toUpperCase():''
+                }
+                
+            
+            }
+            
+            }
+            
+        })
+        console.log(vm.$data.name)
+        console.log(vm.name)
+        /*console.clear()*/
+    </script>
+</body>
+</html>

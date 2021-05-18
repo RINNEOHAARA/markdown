@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <style>
+        .odiv1 {width:80px;background: #aaa;margin: 5px;}
+        .odiv2 {width: 50px;background: #ccc;}
+    </style>
+    <div id="app">
+        <div class="odiv1" v-on:click.self='doParent'>a
+        <div class="odiv2" v-on:click='doThis'>b</div>
+    </div>
+    <div class="odiv1" v-on:click='doParent'>c
+        <div class="odiv2" v-on:click.self='doThis'>d</div>
+    </div>
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            methods:{
+                doParent(){
+                    console.log('father')
+                },
+                doThis(){
+                    console.log('当前')
+                }
+            }
+        })
+    </script>
+</body>
+</html>

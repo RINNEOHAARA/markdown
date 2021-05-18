@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+    <script src="vue.js"></script> 
+    </head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <div>{{msg}}</div>
+        <!-- 两种表示方法 -->
+        <button v-on:click="showInfo"> 请单击</button>
+        <button @click='showInfo'>按钮2</button>
+        <!-- 俩种写法 -->
+    </div>
+    <script>
+        var vm=new Vue({
+            el:'#app',
+            data:{
+                msg:'请单击查看'
+                
+            },
+            methods:{
+                showInfo(){
+                    this.msg='我是v-on'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
